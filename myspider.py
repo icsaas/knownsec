@@ -181,7 +181,8 @@ class MySpider(object):
         # Extract the title by BeautifulSoup
         soup = BeautifulSoup(result, "lxml")
         logger.debug(soup.prettify())
-        title = soup.title.string
+        if soup.title!=None:title = soup.title.string  # if title == None, you can not use .string on it
+        else: title=""
         logger.info('title = %s' % title)
 
         # Store url and title of the page with keyword into database
